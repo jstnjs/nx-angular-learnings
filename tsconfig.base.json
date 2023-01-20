@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@jv/demo-app/features/home": [
+        "libs/demo-app/features/home/src/index.ts"
+      ],
       "@jv/demo-app/features/shell": [
         "libs/demo-app/features/shell/src/index.ts"
       ],
