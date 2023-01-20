@@ -3,9 +3,9 @@ import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
+import { demoAppShellRoutes } from '@jv/demo-app/features/shell';
 import { AppComponent } from './app/app.component';
-import { appRoutes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation())],
+  providers: [provideRouter(demoAppShellRoutes, withEnabledBlockingInitialNavigation())],
 }).catch((err) => console.error(err));

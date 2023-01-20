@@ -1,11 +1,11 @@
-import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
+import { ShellComponent } from '@jv/demo-app/features/shell'
 
 @Component({
   standalone: true,
-  imports: [RouterModule],
+  imports: [ShellComponent],
   selector: 'jv-root',
-  template: `<h1>hey</h1>`,
+  template: `<jv-demo-app-shell />`,
   styles: [],
 })
 export class AppComponent {
