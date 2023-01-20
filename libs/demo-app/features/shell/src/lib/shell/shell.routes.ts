@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { ShellComponent } from './shell.component';
+import { LayoutComponent } from '@jv/demo-app/ui/layout';
 
 export const demoAppShellRoutes: Route[] = [
-  { path: '', component: ShellComponent },
+  { path: '', component: LayoutComponent },
 ];

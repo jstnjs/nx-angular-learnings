@@ -17,7 +17,8 @@
     "paths": {
       "@jv/demo-app/features/shell": [
         "libs/demo-app/features/shell/src/index.ts"
-      ]
+      ],
+      "@jv/demo-app/ui/layout": ["libs/demo-app/ui/layout/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
