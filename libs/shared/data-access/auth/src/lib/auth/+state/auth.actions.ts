@@ -1,6 +1,9 @@
-import { createAction, props } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-export const login = createAction(
-    '[Auth] login',
-    props<{ username: string, password: string }>()
-);
+export const authActions = createActionGroup({
+    source: 'Auth',
+    events: {
+        'Login': props<{ username: string, password: string }>(),
+        'Logout': emptyProps(),
+    }
+});

@@ -1,5 +1,5 @@
-import { createReducer, on } from "@ngrx/store"
-import { login } from "./auth.actions"
+import { createFeature, createReducer, on } from "@ngrx/store"
+import { authActions } from "./auth.actions"
 
 type UserState = {
     name: string;
@@ -11,11 +11,15 @@ export const initialState: UserState = {
     username: '',
 }
 
-export const authReducer = createReducer(
+const authReducer = createReducer(
     initialState,
-    on(login, (state) => ({
+    on(authActions.login, (state) => ({
         ...state,
         name: 'Justin',
         username: 'aNickname',
     }))
 );
+export const authFeature = createFeature({
+    name: 'auth',
+    reducer: authReducer,
+})
