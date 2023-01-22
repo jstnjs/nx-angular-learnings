@@ -1,10 +1,7 @@
 import { Route } from '@angular/router';
 import { LayoutComponent } from '@jv/demo-app/ui/layout';
-import { provideStore, provideState } from '@ngrx/store';
-import { provideEffects } from '@ngrx/effects';
-import * as fromUsers from './+state/users.reducer';
-import { UsersEffects } from './+state/users.effects';
-import { UsersFacade } from './+state/users.facade';
+import { provideState } from '@ngrx/store';
+import { authReducer } from '@jv/shared/data-access/auth';
 
 export const demoAppShellRoutes: Route[] = [
   {
@@ -23,9 +20,7 @@ export const demoAppShellRoutes: Route[] = [
       },
     ],
     providers: [
-      UsersFacade,
-      provideState(fromUsers.USERS_FEATURE_KEY, fromUsers.usersReducer),
-      provideEffects(UsersEffects),
+      provideState('auth', authReducer)
     ],
   },
 ];

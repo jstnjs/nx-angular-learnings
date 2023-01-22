@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as authActions from '@jv/shared/data-access/auth';
 
 @Component({
   selector: 'jv-demo-app-login',
@@ -10,6 +12,7 @@ import { Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
   styles: [],
 })
 export class LoginComponent {
+  store = inject(Store);
   fb = inject(FormBuilder);
 
   form = this.fb.group({
@@ -18,7 +21,7 @@ export class LoginComponent {
   })
 
   login() {
-    console.log('login');
+    this.store.dispatch(authActions.login({username: 'hi', password: 'test'}))
   }
 
 }
