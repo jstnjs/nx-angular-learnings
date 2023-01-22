@@ -18,6 +18,9 @@
       "@jv/demo-app/features/home": [
         "libs/demo-app/features/home/src/index.ts"
       ],
+      "@jv/demo-app/features/login": [
+        "libs/demo-app/features/login/src/index.ts"
+      ],
       "@jv/demo-app/features/shell": [
         "libs/demo-app/features/shell/src/index.ts"
       ],

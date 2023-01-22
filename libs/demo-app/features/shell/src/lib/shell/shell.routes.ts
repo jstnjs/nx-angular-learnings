@@ -9,6 +9,10 @@ export const demoAppShellRoutes: Route[] = [
       {
         path: '',
         loadComponent: () => import('@jv/demo-app/features/home').then(c => c.HomeComponent),
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('@jv/demo-app/features/login').then(c => c.LoginComponent),
       }
     ] 
   },
