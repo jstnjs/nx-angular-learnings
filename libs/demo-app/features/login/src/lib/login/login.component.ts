@@ -21,7 +21,12 @@ export class LoginComponent {
   })
 
   login() {
-    this.store.dispatch(authActions.login({username: 'hi', password: 'test'}))
+    const email = this.form.value.email;
+    const password = this.form.value.password;
+
+    if (email && password) {
+      this.store.dispatch(authActions.login({ email, password}))
+    }
   }
 
 }
