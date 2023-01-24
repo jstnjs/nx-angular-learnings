@@ -16,7 +16,7 @@ export class LoginComponent {
   fb = inject(FormBuilder);
 
   form = this.fb.group({
-    email: ['', [Validators.email, Validators.required]],
+    email: ['', [Validators.required]],
     password: ['', Validators.required],
   })
 

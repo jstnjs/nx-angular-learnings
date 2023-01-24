@@ -1,7 +1,8 @@
 import { Route } from '@angular/router';
 import { LayoutComponent } from '@jv/demo-app/ui/layout';
 import { provideState } from '@ngrx/store';
-import { authFeature } from '@jv/shared/data-access/auth';
+import { AuthEffects, authFeature } from '@jv/shared/data-access/auth';
+import { provideEffects } from '@ngrx/effects';
 
 export const demoAppShellRoutes: Route[] = [
   {
@@ -20,7 +21,8 @@ export const demoAppShellRoutes: Route[] = [
       },
     ],
     providers: [
-      provideState(authFeature)
+      provideState(authFeature),
+      provideEffects(AuthEffects),
     ],
   },
 ];

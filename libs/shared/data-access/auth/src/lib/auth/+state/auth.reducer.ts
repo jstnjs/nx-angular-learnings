@@ -17,6 +17,14 @@ const authReducer = createReducer(
         ...state,
         name: 'Justin',
         username: 'aNickname',
+    })),
+    on(authActions.loginFailure, (state) => ({
+        ...state,
+        name: 'success',
+    })),
+    on(authActions.loginFailure, state => ({
+        ...state,
+        name: 'fail',
     }))
 );
 export const authFeature = createFeature({

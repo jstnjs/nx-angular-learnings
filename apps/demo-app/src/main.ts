@@ -8,6 +8,8 @@ import { provideStore } from '@ngrx/store';
 import { AppComponent } from './app/app.component';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { API_URL } from 'libs/shared/core/http-client/src/lib/api-url.token';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -19,6 +21,8 @@ bootstrapApplication(AppComponent, {
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
       trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
-    })
+    }),
+    { provide: API_URL, useValue: 'fakeurl/api-proxy/'},
+    provideHttpClient(),
   ],
 }).catch((err) => console.error(err));
