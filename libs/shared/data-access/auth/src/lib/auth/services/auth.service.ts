@@ -13,7 +13,7 @@ export class AuthService {
     apiService = inject(ApiService);
 
     login(credentials: { email: string, password: string }): Observable<UserResponse> {
-        return this.apiService.post('/users/login', credentials);
+        return this.apiService.post('/auth/login', credentials);
     }
 
     register() {

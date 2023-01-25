@@ -22,7 +22,7 @@ bootstrapApplication(AppComponent, {
       trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
-    { provide: API_URL, useValue: 'fakeurl/api-proxy/'},
+    { provide: API_URL, useValue: '/api'},
     provideHttpClient(),
   ],
 }).catch((err) => console.error(err));
