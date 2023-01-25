@@ -9,7 +9,7 @@ import { AppComponent } from './app/app.component';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
-import { API_URL } from 'libs/shared/core/http-client/src/lib/api-url.token';
+import { API_URL } from '@jv/shared/core/http-client';
 
 bootstrapApplication(AppComponent, {
   providers: [
