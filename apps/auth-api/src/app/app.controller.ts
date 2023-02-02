@@ -12,9 +12,9 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req, @Res({passthrough: true}) res: Response) {
-    const user = await this.authService.login(req.user);
+    const accessToken = await this.authService.login(req.user);
     const secretData = {
-      accessToken: user.access_token,
+      accessToken,
       refreshToken: 'tbc',
     }
     res.cookie('auth-cookie', secretData, {

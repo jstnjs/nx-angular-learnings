@@ -3,9 +3,9 @@ import { ApiService } from "@jv/shared/core/http-client";
 import { Observable } from "rxjs";
 
 type UserResponse = {
+    userId: number;
     email: string;
-    nickname: string;
-    age: number;
+    username: string;
 }
 
 @Injectable({providedIn: 'root'})
