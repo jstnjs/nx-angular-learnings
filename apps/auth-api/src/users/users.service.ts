@@ -1,6 +1,10 @@
 import { User } from '@jv/shared/data-access/auth';
 import { Injectable } from '@nestjs/common';
 
+export interface UserRecord extends User {
+  password: string;
+}
+
 @Injectable()
 export class UsersService {
   private readonly users = [
@@ -18,7 +22,7 @@ export class UsersService {
     },
   ];
 
-  async findOne(email: string): Promise<User | undefined> {
+  async findOne(email: string): Promise<UserRecord | undefined> {
     return this.users.find(user => user.email === email);
   }
 }
