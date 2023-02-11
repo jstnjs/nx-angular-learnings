@@ -12,6 +12,6 @@ export class ArticleService {
     apiService = inject(ApiService);
 
     getArticles(): Observable<ArticlesResponse> {
-        return this.apiService.post('/articles');
+        return this.apiService.get('/articles');
     }
 }

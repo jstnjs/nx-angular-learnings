@@ -29,4 +29,19 @@ export class AppController {
   getProfile(@Request() req) {
     return req.user;
   }
+
+  @Get('articles')
+  getArticles(@Request() req) {
+    const test =  [{
+      id: 1,
+      slug: 'how-to-do',
+      title: 'How to do',
+    },
+    {
+      id: 2,
+      slug: 'best-practices',
+      title: 'Best practices',
+    }];
+    return test;
+  }
 }
