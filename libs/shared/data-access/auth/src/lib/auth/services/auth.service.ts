@@ -3,9 +3,9 @@ import { ApiService } from "@jv/shared/core/http-client";
 import { Observable } from "rxjs";
 
 type UserResponse = {
+    userId: number;
     email: string;
-    nickname: string;
-    age: number;
+    username: string;
 }
 
 @Injectable({providedIn: 'root'})
@@ -13,7 +13,11 @@ export class AuthService {
     apiService = inject(ApiService);
 
     login(credentials: { email: string, password: string }): Observable<UserResponse> {
-        return this.apiService.post('/users/login', credentials);
+        const _credentials = {
+            email: 'john@example.com',
+            password: 'changeme',
+        }
+        return this.apiService.post('/auth/login', _credentials);
     }
 
     register() {
