@@ -3,6 +3,7 @@ import { LayoutComponent } from '@jv/demo-app/ui/layout';
 import { provideState } from '@ngrx/store';
 import { AuthEffects, authFeature } from '@jv/shared/data-access/auth';
 import { provideEffects } from '@ngrx/effects';
+import { ArticlesEffects, articlesFeature } from '@jv/demo-app/data-access/articles';
 
 export const demoAppShellRoutes: Route[] = [
   {
@@ -23,6 +24,8 @@ export const demoAppShellRoutes: Route[] = [
     providers: [
       provideState(authFeature),
       provideEffects(AuthEffects),
+      provideState(articlesFeature),
+      provideEffects(ArticlesEffects),
     ],
   },
 ];
