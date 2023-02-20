@@ -20,7 +20,7 @@ export class ArticlesEffects {
       ),
       exhaustMap(() => 
         this.articleService.getArticles().pipe(
-            map(articles => ArticlesActions.loadArticlesSuccess(articles)),
+            map(articles => ArticlesActions.loadArticlesSuccess({articles})),
             catchError(error => of(ArticlesActions.loadArticlesFailure({error})))
         )
     )

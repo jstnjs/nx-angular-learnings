@@ -1,23 +1,20 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { createReducer, on, Action, createFeature } from '@ngrx/store';
+import { createReducer, on, createFeature } from '@ngrx/store';
 
 import * as ArticlesActions from './articles.actions';
 import { ArticlesEntity } from './articles.models';
 
-export const ARTICLES_FEATURE_KEY = 'articles';
-
 export interface ArticlesState extends EntityState<ArticlesEntity> {
-  selectedId: string | number | null; // which Articles record has been selected
-  loaded: boolean; // has the Articles list been loaded
-  error: string | null; // last known error (if any)
-}
-
-export interface ArticlesPartialState {
-  readonly [ARTICLES_FEATURE_KEY]: ArticlesState;
+  selectedId: string | number | null;
+  loaded: boolean;
+  error: string | null;
 }
 
 export const articlesAdapter: EntityAdapter<ArticlesEntity> =
-  createEntityAdapter<ArticlesEntity>();
+  createEntityAdapter<ArticlesEntity>({
+    selectId: (model: ArticlesEntity) => model.id
+  });
+
 
 export const initialArticlesState: ArticlesState =
   articlesAdapter.getInitialState({
@@ -33,23 +30,18 @@ const reducer = createReducer(
     loaded: false,
     error: null,
   })),
-  on(ArticlesActions.loadArticlesSuccess, (state, { articles }) =>
-    articlesAdapter.setAll(articles, { ...state, loaded: true })
+  on(ArticlesActions.loadArticlesSuccess, (state, {articles} ) =>
+    {
+      console.log('art',articles);
+      return articlesAdapter.setAll(articles, state)
+    }
   ),
   on(ArticlesActions.loadArticlesFailure, (state, { error }) => ({
     ...state,
     error,
   }))
 );
-
-export function articlesReducer(
-  state: ArticlesState | undefined,
-  action: Action
-) {
-  return reducer(state, action);
-}
-
 export const articlesFeature = createFeature({
   name: 'articles',
-  reducer: articlesReducer,
+  reducer,
 })

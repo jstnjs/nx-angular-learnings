@@ -2,6 +2,6 @@
  * Interface for the 'Articles' data
  */
 export interface ArticlesEntity {
-  id: string | number; // Primary ID
+  id: number; // Primary ID
   name: string;
 }
