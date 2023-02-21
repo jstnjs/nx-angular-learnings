@@ -3,5 +3,6 @@
  */
 export interface ArticlesEntity {
   id: number; // Primary ID
-  name: string;
+  slug: string;
+  title: string;
 }

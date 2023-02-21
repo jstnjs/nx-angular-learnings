@@ -1,15 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
-  ARTICLES_FEATURE_KEY,
   ArticlesState,
   articlesAdapter,
+  articlesFeature,
 } from './articles.reducer';
 
-// // Lookup the 'Articles' feature state managed by NgRx
-// export const selectArticlesState =
-//   createFeatureSelector<ArticlesState>(ARTICLES_FEATURE_KEY);
+// Lookup the 'Articles' feature state managed by NgRx
+export const selectArticlesState =
+  createFeatureSelector<ArticlesState>(articlesFeature.name);
 
-// const { selectAll, selectEntities } = articlesAdapter.getSelectors();
+const { selectAll } = articlesAdapter.getSelectors();
 
 // export const selectArticlesLoaded = createSelector(
 //   selectArticlesState,
@@ -21,10 +21,10 @@ import {
 //   (state: ArticlesState) => state.error
 // );
 
-// export const selectAllArticles = createSelector(
-//   selectArticlesState,
-//   (state: ArticlesState) => selectAll(state)
-// );
+export const selectAllArticles = createSelector(
+  selectArticlesState,
+  selectAll
+);
 
 // export const selectArticlesEntities = createSelector(
 //   selectArticlesState,

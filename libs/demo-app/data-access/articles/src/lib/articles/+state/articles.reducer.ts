@@ -1,7 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, createFeature } from '@ngrx/store';
 
-import * as ArticlesActions from './articles.actions';
+import { ArticlesActions } from './articles.actions';
 import { ArticlesEntity } from './articles.models';
 
 export interface ArticlesState extends EntityState<ArticlesEntity> {

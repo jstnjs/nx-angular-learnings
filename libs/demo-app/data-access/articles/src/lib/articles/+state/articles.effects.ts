@@ -1,10 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 
-import * as ArticlesActions from './articles.actions';
+import { ArticlesActions } from './articles.actions';
 
 import { catchError, of, exhaustMap, map } from 'rxjs';
-import { homePageActions } from '@jv/demo-app/features/home';
 import { ArticleService } from '../services/article.service';
 
 @Injectable()
@@ -15,8 +14,7 @@ export class ArticlesEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        ArticlesActions.initArticles, 
-        homePageActions.opened
+        ArticlesActions.initArticles,
       ),
       exhaustMap(() => 
         this.articleService.getArticles().pipe(
