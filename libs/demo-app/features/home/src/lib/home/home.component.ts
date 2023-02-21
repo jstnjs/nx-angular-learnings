@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '@jv/shared/core/http-client';
+import { Store } from '@ngrx/store';
+import { ArticlesActions, selectAllArticles } from '@jv/demo-app/data-access/articles';
 
 @Component({
   selector: 'jv-demo-app-home',
@@ -9,14 +11,19 @@ import { ApiService } from '@jv/shared/core/http-client';
   templateUrl: './home.component.html',
   styles: [],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   apiService = inject(ApiService);
+  store = inject(Store);
+  articles$ = this.store.select(selectAllArticles);
 
   aTestRequest() {
-    console.log('works?')
     this.apiService.get('/profile').subscribe((testingg => {
       console.log(testingg);
     }))
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(ArticlesActions.initArticles());
   }
 }
