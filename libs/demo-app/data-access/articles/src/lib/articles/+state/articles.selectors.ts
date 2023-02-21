@@ -9,7 +9,7 @@ import {
 export const selectArticlesState =
   createFeatureSelector<ArticlesState>(articlesFeature.name);
 
-const { selectAll } = articlesAdapter.getSelectors();
+const { selectAll, selectEntities } = articlesAdapter.getSelectors();
 
 // export const selectArticlesLoaded = createSelector(
 //   selectArticlesState,
@@ -26,18 +26,23 @@ export const selectAllArticles = createSelector(
   selectAll
 );
 
-// export const selectArticlesEntities = createSelector(
-//   selectArticlesState,
-//   (state: ArticlesState) => selectEntities(state)
-// );
+export const selectArticlesEntities = createSelector(
+  selectArticlesState,
+  (state: ArticlesState) => selectEntities(state)
+);
 
-// export const selectSelectedId = createSelector(
-//   selectArticlesState,
-//   (state: ArticlesState) => state.selectedId
-// );
+export const selectSelectedId = createSelector(
+  selectArticlesState,
+  (state: ArticlesState) => state.selectedId
+);
 
-// export const selectEntity = createSelector(
-//   selectArticlesEntities,
-//   selectSelectedId,
-//   (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
-// );
+export const selectEntity = createSelector(
+  selectArticlesEntities,
+  selectSelectedId,
+  (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
+);
+
+export const selectArticlesEntitiesById = (props: { id: number }) =>
+  createSelector(selectArticlesEntities, (entities) => (props.id ? entities[props.id] : undefined));
+
+

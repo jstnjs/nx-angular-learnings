@@ -30,16 +30,18 @@ const reducer = createReducer(
     loaded: false,
     error: null,
   })),
-  on(ArticlesActions.loadArticlesSuccess, (state, {articles} ) =>
-    {
-      console.log('art',articles);
-      return articlesAdapter.setAll(articles, state)
-    }
+  on(ArticlesActions.loadArticlesSuccess, (state, {articles} ) => 
+    articlesAdapter.setAll(articles, state)
   ),
   on(ArticlesActions.loadArticlesFailure, (state, { error }) => ({
     ...state,
     error,
+  })),
+  on(ArticlesActions.selectArticle, (state, { id }) => ({
+    ...state,
+    selectedId: id,
   }))
+
 );
 export const articlesFeature = createFeature({
   name: 'articles',

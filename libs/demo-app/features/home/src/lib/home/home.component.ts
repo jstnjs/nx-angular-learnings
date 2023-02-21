@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '@jv/shared/core/http-client';
 import { Store } from '@ngrx/store';
 import { ArticlesActions, selectAllArticles } from '@jv/demo-app/data-access/articles';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'jv-demo-app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styles: [],
 })
