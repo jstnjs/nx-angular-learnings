@@ -14,7 +14,9 @@
         "main": "apps/auth-api/src/main.ts",
         "tsConfig": "apps/auth-api/tsconfig.app.json",
         "assets": ["apps/auth-api/src/assets"],
-        "webpackConfig": "apps/auth-api/webpack.config.js"
+        "webpackConfig": "apps/auth-api/webpack.config.js",
+        "isolatedConfig": true,
+        "babelUpwardRootMode": true
       },
       "configurations": {
         "production": {
