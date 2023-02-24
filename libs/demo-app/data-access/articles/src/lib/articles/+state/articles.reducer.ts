@@ -31,9 +31,20 @@ const reducer = createReducer(
     error: null,
   })),
   on(ArticlesActions.loadArticlesSuccess, (state, {articles} ) => 
-    articlesAdapter.setAll(articles, state)
+    articlesAdapter.setAll(articles, {...state, loaded: true})
   ),
   on(ArticlesActions.loadArticlesFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+  on(ArticlesActions.loadArticle, (state) => ({
+    ...state,
+    loaded: false,
+  })),
+  on(ArticlesActions.loadArticleSuccess, (state, {article} ) => 
+    articlesAdapter.upsertOne(article, {...state, loaded: true, selectedId: article.id})
+  ),
+  on(ArticlesActions.loadArticleFailure, (state, { error }) => ({
     ...state,
     error,
   })),

@@ -11,10 +11,10 @@ export const selectArticlesState =
 
 const { selectAll, selectEntities } = articlesAdapter.getSelectors();
 
-// export const selectArticlesLoaded = createSelector(
-//   selectArticlesState,
-//   (state: ArticlesState) => state.loaded
-// );
+export const selectArticlesLoaded = createSelector(
+  selectArticlesState,
+  (state: ArticlesState) => state.loaded
+);
 
 // export const selectArticlesError = createSelector(
 //   selectArticlesState,
@@ -28,7 +28,7 @@ export const selectAllArticles = createSelector(
 
 export const selectArticlesEntities = createSelector(
   selectArticlesState,
-  (state: ArticlesState) => selectEntities(state)
+  selectEntities
 );
 
 export const selectSelectedId = createSelector(
@@ -36,7 +36,7 @@ export const selectSelectedId = createSelector(
   (state: ArticlesState) => state.selectedId
 );
 
-export const selectEntity = createSelector(
+export const selectSelectedArticle = createSelector(
   selectArticlesEntities,
   selectSelectedId,
   (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)

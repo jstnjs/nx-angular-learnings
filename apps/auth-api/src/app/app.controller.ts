@@ -2,7 +2,7 @@ import { Controller, Request, Post, UseGuards, Get } from '@nestjs/common';
 import { LocalAuthGuard } from '../auth/guards/local-auth.guard';
 import { AuthService } from '../auth/auth.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { Req, Res } from '@nestjs/common/decorators';
+import { Param, Req, Res } from '@nestjs/common/decorators';
 import { Response } from 'express'
 
 @Controller()
@@ -43,5 +43,21 @@ export class AppController {
       title: 'Best practices',
     }];
     return test;
+  }
+
+  @Get('articles/:id')
+  findOneArticle(@Param() params) {
+    const test =  [{
+      id: 1,
+      slug: 'how-to-do',
+      title: 'How to do',
+    },
+    {
+      id: 2,
+      slug: 'best-practices',
+      title: 'Best practices',
+    }];
+
+    return test.find(item => item.id == params.id);
   }
 }

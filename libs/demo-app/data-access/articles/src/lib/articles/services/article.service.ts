@@ -10,4 +10,8 @@ export class ArticleService {
     getArticles(): Observable<ArticlesEntity[]> {
         return this.apiService.get('/articles');
     }
+
+    getArticle(id: number): Observable<ArticlesEntity> {
+        return this.apiService.get(`/articles/${id}`);
+    }
 }

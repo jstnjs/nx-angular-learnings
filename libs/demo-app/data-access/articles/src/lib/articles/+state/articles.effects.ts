@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { createEffect, Actions, ofType, act } from '@ngrx/effects';
 
 import { ArticlesActions } from './articles.actions';
 
-import { catchError, of, exhaustMap, map } from 'rxjs';
+import { catchError, of, exhaustMap, map, retry } from 'rxjs';
 import { ArticleService } from '../services/article.service';
 
 @Injectable()
@@ -21,6 +21,22 @@ export class ArticlesEffects {
             map(articles => ArticlesActions.loadArticlesSuccess({articles})),
             catchError(error => of(ArticlesActions.loadArticlesFailure({error})))
         )
+    )
+    )
+  );
+
+  loadArticle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        ArticlesActions.loadArticle,
+      ),
+      exhaustMap(({ id }) => 
+        {
+          return this.articleService.getArticle(id).pipe(
+            map(article => ArticlesActions.loadArticleSuccess({article})),
+            catchError(error => of(ArticlesActions.loadArticleFailure({error})))
+        )
+        }
     )
     )
   );
