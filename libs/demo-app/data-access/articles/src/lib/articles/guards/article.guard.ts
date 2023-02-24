@@ -1,14 +1,11 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateFn } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, Observable, of, take, tap } from 'rxjs';
+import { filter, Observable, take } from 'rxjs';
 import { ArticlesActions } from '../+state/articles.actions';
 import { selectArticlesLoaded } from '../+state/articles.selectors';
 
-export const articleGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot,
-): Observable<boolean> => {
+export const articleGuard: CanActivateFn = (route: ActivatedRouteSnapshot): Observable<boolean> => {
   // return of(true);
   const store = inject(Store);
   const { articleId } = route.params;

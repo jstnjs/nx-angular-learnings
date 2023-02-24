@@ -5,14 +5,8 @@ import { ArticlesState, articlesAdapter, articlesFeature } from './articles.redu
 export const selectArticlesState = createFeatureSelector<ArticlesState>(articlesFeature.name);
 
 const { selectAll, selectEntities } = articlesAdapter.getSelectors();
-const { selectIds } = articlesFeature;
 
 export const selectArticlesLoaded = createSelector(selectArticlesState, (state: ArticlesState) => state.loaded);
-
-// export const selectArticlesError = createSelector(
-//   selectArticlesState,
-//   (state: ArticlesState) => state.error
-// );
 
 export const selectAllArticles = createSelector(selectArticlesState, selectAll);
 

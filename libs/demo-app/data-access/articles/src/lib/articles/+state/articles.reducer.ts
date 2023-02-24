@@ -22,33 +22,48 @@ export const initialArticlesState: ArticlesState = articlesAdapter.getInitialSta
 
 const reducer = createReducer(
   initialArticlesState,
-  on(ArticlesActions.initArticles, (state) => ({
-    ...state,
-    loaded: false,
-    error: null,
-  })),
+  on(
+    ArticlesActions.initArticles,
+    (state): ArticlesState => ({
+      ...state,
+      loaded: false,
+      error: null,
+    }),
+  ),
   on(ArticlesActions.loadArticlesSuccess, (state, { articles }) =>
     articlesAdapter.setAll(articles, { ...state, loaded: true }),
   ),
-  on(ArticlesActions.loadArticlesFailure, (state, { error }) => ({
-    ...state,
-    error,
-  })),
-  on(ArticlesActions.loadArticle, (state) => ({
-    ...state,
-    loaded: false,
-  })),
+  on(
+    ArticlesActions.loadArticlesFailure,
+    (state, { error }): ArticlesState => ({
+      ...state,
+      error: error.message,
+    }),
+  ),
+  on(
+    ArticlesActions.loadArticle,
+    (state): ArticlesState => ({
+      ...state,
+      loaded: false,
+    }),
+  ),
   on(ArticlesActions.loadArticleSuccess, (state, { article }) =>
     articlesAdapter.upsertOne(article, { ...state, loaded: true, selectedId: article.id }),
   ),
-  on(ArticlesActions.loadArticleFailure, (state, { error }) => ({
-    ...state,
-    error,
-  })),
-  on(ArticlesActions.selectArticle, (state, { id }) => ({
-    ...state,
-    selectedId: id,
-  })),
+  on(
+    ArticlesActions.loadArticleFailure,
+    (state, { error }): ArticlesState => ({
+      ...state,
+      error: error.message,
+    }),
+  ),
+  on(
+    ArticlesActions.selectArticle,
+    (state, { id }): ArticlesState => ({
+      ...state,
+      selectedId: id,
+    }),
+  ),
 );
 export const articlesFeature = createFeature({
   name: 'articles',

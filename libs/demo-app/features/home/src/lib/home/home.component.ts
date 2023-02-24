@@ -4,6 +4,7 @@ import { ApiService } from '@jv/shared/core/http-client';
 import { Store } from '@ngrx/store';
 import { ArticlesActions, selectAllArticles } from '@jv/demo-app/data-access/articles';
 import { Router, RouterModule } from '@angular/router';
+import { authActions } from '@jv/shared/data-access/auth';
 
 @Component({
   selector: 'jv-demo-app-home',
@@ -25,5 +26,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(ArticlesActions.initArticles());
+    this.store.dispatch(authActions.logout());
   }
 }
