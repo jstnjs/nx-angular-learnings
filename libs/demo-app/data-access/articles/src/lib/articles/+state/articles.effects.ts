@@ -3,15 +3,18 @@ import { createEffect, Actions, ofType, act } from '@ngrx/effects';
 
 import { ArticlesActions } from './articles.actions';
 
-import { catchError, of, exhaustMap, map, retry } from 'rxjs';
+import { catchError, of, exhaustMap, map, retry, withLatestFrom, EMPTY } from 'rxjs';
 import { ArticleService } from '../services/article.service';
+import { Store } from '@ngrx/store';
+import { selectAllArticles, selectSelectedId } from './articles.selectors';
 
 @Injectable()
 export class ArticlesEffects {
   private actions$ = inject(Actions);
-  private articleService = inject(ArticleService)
+  private articleService = inject(ArticleService);
+  private store = inject(Store);
 
-  init$ = createEffect(() =>
+  loadArticles$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
         ArticlesActions.initArticles,
@@ -25,17 +28,25 @@ export class ArticlesEffects {
     )
   );
 
-  loadArticle$ = createEffect(() =>
+  loadSingleArticle$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
         ArticlesActions.loadArticle,
       ),
-      exhaustMap(({ id }) => 
+      withLatestFrom(this.store.select(selectAllArticles)),
+      exhaustMap(([{ id }, articles]) => 
         {
-          return this.articleService.getArticle(id).pipe(
-            map(article => ArticlesActions.loadArticleSuccess({article})),
-            catchError(error => of(ArticlesActions.loadArticleFailure({error})))
-        )
+
+          console.log(articles.length);
+          if (articles.length === 0 && !articles[id]) {
+            console.log('hi??')
+            return this.articleService.getArticle(id).pipe(
+              map(article => ArticlesActions.loadArticleSuccess({article})),
+              catchError(error => of(ArticlesActions.loadArticleFailure({error})))
+          )
+          }
+
+          return EMPTY;
         }
     )
     )

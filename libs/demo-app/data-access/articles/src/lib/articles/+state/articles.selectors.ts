@@ -10,6 +10,7 @@ export const selectArticlesState =
   createFeatureSelector<ArticlesState>(articlesFeature.name);
 
 const { selectAll, selectEntities } = articlesAdapter.getSelectors();
+const { selectIds } = articlesFeature;
 
 export const selectArticlesLoaded = createSelector(
   selectArticlesState,
