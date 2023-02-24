@@ -13,15 +13,14 @@ import { Router, RouterModule } from '@angular/router';
   styles: [],
 })
 export class HomeComponent implements OnInit {
-
   apiService = inject(ApiService);
   store = inject(Store);
   articles$ = this.store.select(selectAllArticles);
 
   aTestRequest() {
-    this.apiService.get('/profile').subscribe((testingg => {
+    this.apiService.get('/profile').subscribe((testingg) => {
       console.log(testingg);
-    }))
+    });
   }
 
   ngOnInit(): void {

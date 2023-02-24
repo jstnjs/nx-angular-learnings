@@ -12,21 +12,17 @@ export const demoAppShellRoutes: Route[] = [
     children: [
       {
         path: '',
-        loadComponent: () =>
-          import('@jv/demo-app/features/home').then((c) => c.HomeComponent),
+        loadComponent: () => import('@jv/demo-app/features/home').then((c) => c.HomeComponent),
       },
       {
         path: 'login',
-        loadComponent: () =>
-          import('@jv/demo-app/features/login').then((c) => c.LoginComponent),
+        loadComponent: () => import('@jv/demo-app/features/login').then((c) => c.LoginComponent),
       },
       {
         path: 'articles/:articleId',
-        loadComponent: () =>
-          import('@jv/demo-app/features/article-show').then((c) => c.ArticleShowComponent),
-        canActivate: [articleGuard]
-
-      }
+        loadComponent: () => import('@jv/demo-app/features/article-show').then((c) => c.ArticleShowComponent),
+        canActivate: [articleGuard],
+      },
     ],
     providers: [
       provideState(authFeature),

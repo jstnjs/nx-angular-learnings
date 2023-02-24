@@ -16,39 +16,32 @@ export class ArticlesEffects {
 
   loadArticles$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        ArticlesActions.initArticles,
-      ),
-      exhaustMap(() => 
+      ofType(ArticlesActions.initArticles),
+      exhaustMap(() =>
         this.articleService.getArticles().pipe(
-            map(articles => ArticlesActions.loadArticlesSuccess({articles})),
-            catchError(error => of(ArticlesActions.loadArticlesFailure({error})))
-        )
-    )
-    )
+          map((articles) => ArticlesActions.loadArticlesSuccess({ articles })),
+          catchError((error) => of(ArticlesActions.loadArticlesFailure({ error }))),
+        ),
+      ),
+    ),
   );
 
   loadSingleArticle$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        ArticlesActions.loadArticle,
-      ),
+      ofType(ArticlesActions.loadArticle),
       withLatestFrom(this.store.select(selectAllArticles)),
-      exhaustMap(([{ id }, articles]) => 
-        {
-
-          console.log(articles.length);
-          if (articles.length === 0 && !articles[id]) {
-            console.log('hi??')
-            return this.articleService.getArticle(id).pipe(
-              map(article => ArticlesActions.loadArticleSuccess({article})),
-              catchError(error => of(ArticlesActions.loadArticleFailure({error})))
-          )
-          }
-
-          return EMPTY;
+      exhaustMap(([{ id }, articles]) => {
+        console.log(articles.length);
+        if (articles.length === 0 && !articles[id]) {
+          console.log('hi??');
+          return this.articleService.getArticle(id).pipe(
+            map((article) => ArticlesActions.loadArticleSuccess({ article })),
+            catchError((error) => of(ArticlesActions.loadArticleFailure({ error }))),
+          );
         }
-    )
-    )
+
+        return EMPTY;
+      }),
+    ),
   );
 }

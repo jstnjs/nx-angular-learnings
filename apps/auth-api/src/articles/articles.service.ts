@@ -7,7 +7,6 @@ interface Article {
   title: string;
 }
 
-
 @Injectable()
 export class ArticlesService {
   private readonly articles: Article[] = [
@@ -24,7 +23,7 @@ export class ArticlesService {
   ];
 
   async findOne(id: number): Promise<Article | undefined> {
-    return this.articles.find(article => article.id === id);
+    return this.articles.find((article) => article.id === id);
   }
 
   async findAll(): Promise<Article[] | undefined> {

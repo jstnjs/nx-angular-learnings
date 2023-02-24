@@ -1,9 +1,5 @@
 import { ArticlesEntity } from './articles.models';
-import {
-  articlesAdapter,
-  ArticlesPartialState,
-  initialArticlesState,
-} from './articles.reducer';
+import { articlesAdapter, ArticlesPartialState, initialArticlesState } from './articles.reducer';
 import * as ArticlesSelectors from './articles.selectors';
 
 describe('Articles Selectors', () => {
@@ -20,17 +16,13 @@ describe('Articles Selectors', () => {
   beforeEach(() => {
     state = {
       articles: articlesAdapter.setAll(
-        [
-          createArticlesEntity('PRODUCT-AAA'),
-          createArticlesEntity('PRODUCT-BBB'),
-          createArticlesEntity('PRODUCT-CCC'),
-        ],
+        [createArticlesEntity('PRODUCT-AAA'), createArticlesEntity('PRODUCT-BBB'), createArticlesEntity('PRODUCT-CCC')],
         {
           ...initialArticlesState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
-        }
+        },
       ),
     };
   });

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
+
 import { selectSelectedArticle } from '@jv/demo-app/data-access/articles';
 
 @Component({

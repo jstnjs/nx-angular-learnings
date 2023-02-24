@@ -1,17 +1,9 @@
 <p>home works!</p>
 
 <ul class="bg-white rounded px-4 pt-8 pb-4 m-4 border-gray-200 border">
-  <li
-    *ngFor="let article of articles$ | async"
-    class="bg-blue-100 mb-4 py-2 px-4 rounded"
-  >
+  <li *ngFor="let article of articles$ | async" class="bg-blue-100 mb-4 py-2 px-4 rounded">
     <a routerLink="/articles/{{ article.id }}">{{ article.title }}</a>
   </li>
 </ul>
 
-<button
-  (click)="aTestRequest()"
-  class="bg-blue-400 text-white font-bold p-2 rounded"
->
-  A protected request
-</button>
+<button (click)="aTestRequest()" class="bg-blue-400 text-white font-bold p-2 rounded">A protected request</button>

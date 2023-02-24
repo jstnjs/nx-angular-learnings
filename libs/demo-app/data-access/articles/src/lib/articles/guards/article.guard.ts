@@ -5,18 +5,20 @@ import { filter, Observable, of, take, tap } from 'rxjs';
 import { ArticlesActions } from '../+state/articles.actions';
 import { selectArticlesLoaded } from '../+state/articles.selectors';
 
-export const articleGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> => {
-
+export const articleGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+): Observable<boolean> => {
   // return of(true);
   const store = inject(Store);
   const { articleId } = route.params;
 
   const articleLoaded = store.select(selectArticlesLoaded).pipe(
-      filter((loaded) => loaded),
-      take(1),
-    );
+    filter((loaded) => loaded),
+    take(1),
+  );
 
-  store.dispatch(ArticlesActions.loadArticle({id: articleId}));
+  store.dispatch(ArticlesActions.loadArticle({ id: articleId }));
 
   return articleLoaded;
 };
