@@ -41,17 +41,17 @@ const reducer = createReducer(
     }),
   ),
   on(
-    ArticlesActions.loadArticle,
+    ArticlesActions.loadSingleArticle,
     (state): ArticlesState => ({
       ...state,
       loaded: false,
     }),
   ),
-  on(ArticlesActions.loadArticleSuccess, (state, { article }) =>
+  on(ArticlesActions.loadSingleArticleSuccess, (state, { article }) =>
     articlesAdapter.upsertOne(article, { ...state, loaded: true, selectedId: article.id }),
   ),
   on(
-    ArticlesActions.loadArticleFailure,
+    ArticlesActions.loadSingleArticleFailure,
     (state, { error }): ArticlesState => ({
       ...state,
       error: error.message,

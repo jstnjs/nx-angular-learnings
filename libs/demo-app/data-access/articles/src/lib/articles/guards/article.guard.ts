@@ -15,7 +15,7 @@ export const articleGuard: CanActivateFn = (route: ActivatedRouteSnapshot): Obse
     take(1),
   );
 
-  store.dispatch(ArticlesActions.loadArticle({ id: articleId }));
+  store.dispatch(ArticlesActions.loadSingleArticle({ id: articleId }));
 
   return articleLoaded;
 };

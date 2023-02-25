@@ -7,9 +7,9 @@ export const ArticlesActions = createActionGroup({
     'Init Articles': emptyProps(),
     'Load Articles Success': props<{ articles: ArticlesEntity[] }>(),
     'Load Articles Failure': props<{ error: Error }>(),
-    'Load Article': props<{ id: number }>(),
-    'Load Article Success': props<{ article: ArticlesEntity }>(),
-    'Load Article Failure': props<{ error: Error }>(),
+    'Load Single Article': props<{ id: number }>(),
+    'Load Single Article Success': props<{ article: ArticlesEntity }>(),
+    'Load Single Article Failure': props<{ error: Error }>(),
     'Select Article': props<{ id: string }>(),
   },
 });
