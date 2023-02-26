@@ -15,11 +15,7 @@ describe('ArticlesEffects', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],
-      providers: [
-        ArticlesEffects,
-        provideMockActions(() => actions),
-        provideMockStore(),
-      ],
+      providers: [ArticlesEffects, provideMockActions(() => actions), provideMockStore()],
     });
 
     effects = TestBed.inject(ArticlesEffects);
