@@ -34,7 +34,7 @@ export class ArticlesEffects {
         const cachedArticle = articles[id];
 
         if (cachedArticle === undefined) {
-          return this.articleService.getArticle(id).pipe(
+          return this.articleService.getSingleArticle(id).pipe(
             map((article) => ArticlesActions.loadSingleArticleSuccess({ article })),
             catchError((error) => of(ArticlesActions.loadSingleArticleFailure({ error }))),
           );

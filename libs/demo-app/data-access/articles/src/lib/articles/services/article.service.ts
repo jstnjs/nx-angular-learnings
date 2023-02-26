@@ -11,7 +11,7 @@ export class ArticleService {
     return this.apiService.get('/articles');
   }
 
-  getArticle(id: number): Observable<ArticlesEntity> {
+  getSingleArticle(id: number): Observable<ArticlesEntity> {
     return this.apiService.get(`/articles/${id}`);
   }
 }
