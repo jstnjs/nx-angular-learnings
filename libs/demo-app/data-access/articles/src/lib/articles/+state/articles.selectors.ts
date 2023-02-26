@@ -14,7 +14,7 @@ export const selectArticlesEntities = createSelector(selectArticlesState, select
 
 export const selectSelectedId = createSelector(selectArticlesState, (state: ArticlesState) => state.selectedId);
 
-export const selectSelectedArticle = createSelector(selectArticlesEntities, selectSelectedId, (entities, selectedId) =>
+export const selectCurrentArticle = createSelector(selectArticlesEntities, selectSelectedId, (entities, selectedId) =>
   selectedId ? entities[selectedId] : undefined,
 );
 

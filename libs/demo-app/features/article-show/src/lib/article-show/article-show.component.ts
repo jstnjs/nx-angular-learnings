@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
-import { selectSelectedArticle } from '@jv/demo-app/data-access/articles';
+import { selectCurrentArticle } from '@jv/demo-app/data-access/articles';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -14,5 +14,5 @@ import { RouterModule } from '@angular/router';
 })
 export class ArticleShowComponent {
   store = inject(Store);
-  article$ = this.store.select(selectSelectedArticle);
+  article$ = this.store.select(selectCurrentArticle);
 }
