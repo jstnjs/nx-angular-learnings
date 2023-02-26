@@ -6,7 +6,6 @@ import { ArticlesActions } from '../+state/articles.actions';
 import { selectArticlesLoaded } from '../+state/articles.selectors';
 
 export const articleGuard: CanActivateFn = (route: ActivatedRouteSnapshot): Observable<boolean> => {
-  // return of(true);
   const store = inject(Store);
   const { articleId } = route.params;
 

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 import { selectSelectedArticle } from '@jv/demo-app/data-access/articles';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'jv-article-show',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './article-show.component.html',
   styles: [],
 })
