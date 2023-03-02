@@ -17,10 +17,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/shared/data-access/auth/**/*.ts",
-          "libs/shared/data-access/auth/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/shared/data-access/auth/**/*.ts", "libs/shared/data-access/auth/**/*.html"]
       }
     }
   },
