@@ -26,6 +26,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(ArticlesActions.initArticles());
-    this.store.dispatch(authActions.logout());
   }
 }

@@ -17,10 +17,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/shared/core/http-client/**/*.ts",
-          "libs/shared/core/http-client/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/shared/core/http-client/**/*.ts", "libs/shared/core/http-client/**/*.html"]
       }
     }
   },

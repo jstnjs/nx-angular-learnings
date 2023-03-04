@@ -17,10 +17,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/demo-app/features/home/**/*.ts",
-          "libs/demo-app/features/home/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/demo-app/features/home/**/*.ts", "libs/demo-app/features/home/**/*.html"]
       }
     }
   },
