@@ -58,7 +58,7 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "proxyConfig": "apps/demo-app/proxy.conf.json"
+        "proxyConfig": "apps/demo-app/proxy.conf.js"
       }
     },
     "extract-i18n": {
