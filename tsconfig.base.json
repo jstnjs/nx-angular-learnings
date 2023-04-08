@@ -25,6 +25,7 @@
       "@jv/demo-app/ui/layout": ["libs/demo-app/ui/layout/src/index.ts"],
       "@jv/shared/core/http-client": ["libs/shared/core/http-client/src/index.ts"],
       "@jv/shared/data-access/auth": ["libs/shared/data-access/auth/src/index.ts"],
+      "@jv/shared/ui/alert": ["libs/shared/ui/alert/src/index.ts"],
       "@jv/shared/ui/button": ["libs/shared/ui/button/src/index.ts"],
       "@jv/storybook-host": ["libs/storybook-host/src/index.ts"]
     }
