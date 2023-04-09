@@ -1,0 +1,7 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "",
+    "project.json": "README.md, tsconfig.json, tsconfig.*.json, jest.config.ts, .eslintrc.json"
+  }
+}
