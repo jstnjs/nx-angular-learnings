@@ -1,5 +1,4 @@
-import { worker } from '../mocks';
-
+import { worker } from '../mocks/browser';
 worker.start();
 
 export const environment = {};
