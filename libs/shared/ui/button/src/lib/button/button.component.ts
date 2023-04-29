@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'jv-button',
   standalone: true,
   imports: [CommonModule],
-  template: `<button>Test</button>`,
+  template: `<button class="bg-red-100 m-4">Test</button>`,
   styles: [],
 })
 export class ButtonComponent {}
