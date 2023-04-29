@@ -18,6 +18,4 @@ const myResourceHandler = rest.get('/api/articles', (req, res, ctx) =>
   ),
 );
 
-const worker = setupWorker(myResourceHandler);
-
-worker.start();
+export const worker = setupWorker(myResourceHandler);
