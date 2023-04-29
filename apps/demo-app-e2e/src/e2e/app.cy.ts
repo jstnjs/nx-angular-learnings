@@ -4,6 +4,6 @@ describe('demo-app', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
-    cy.get('p').contains("home works!");
+    cy.get('p').contains('How to get Cypress working with MSW');
   });
 });

@@ -14,6 +14,11 @@ const articlesHandler = rest.get('/api/articles', (req, res, ctx) =>
         slug: 'best-practices',
         title: 'Best practices',
       },
+      {
+        id: 3,
+        slug: 'show-article-from-mock',
+        title: 'How to get Cypress working with MSW',
+      },
     ]),
   ),
 );
