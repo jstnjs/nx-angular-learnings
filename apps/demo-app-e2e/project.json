@@ -8,9 +8,10 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "nx build demo-app",
-          "start-server-and-test --expect 200 'http-server -c-1 ./dist/apps/demo-app' http://127.0.0.1:8080 'nx _e2e demo-app-e2e'"
-        ]
+          "nx run demo-app:build:development",
+          "start-server-and-test 'angular-http-server --path ./dist/apps/demo-app' http://127.0.0.1:8080 'nx _e2e demo-app-e2e'"
+        ],
+        "parallel": false
       }
     },
     "_e2e": {
