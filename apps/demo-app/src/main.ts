@@ -7,11 +7,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { API_URL } from '@jv/shared/core/http-client';
-import { environment } from './environments/environment';
-
-if (environment) {
-  console.log('This is just here to please ts');
-}
+import './environments/environment';
 
 bootstrapApplication(AppComponent, {
   providers: [
