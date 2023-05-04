@@ -15,7 +15,7 @@
       }
     },
     "_e2e": {
-      "executor": "@nrwl/cypress:cypress",
+      "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/demo-app-e2e/cypress.config.ts",
         "baseUrl": "http://localhost:8080",
@@ -28,7 +28,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/demo-app-e2e/**/*.{js,ts}"]
