@@ -12,11 +12,11 @@ import { RouterModule } from '@angular/router';
 export class LayoutComponent {
   title = 'home';
   routes = [
-    { link: '', title: 'Home'},
-    { link: 'all-files', title: 'All files'},
-    { link: 'photos', title: 'Photos'},
-    { link: 'shared', title: 'Shared'},
-    { link: 'albums', title: 'Albums'},
-    { link: 'settings', title: 'Settings'},
-  ]
+    { link: '', title: 'Home' },
+    { link: 'all-files', title: 'All files' },
+    { link: 'photos', title: 'Photos' },
+    { link: 'experiments', title: 'Experiments' },
+    { link: 'albums', title: 'Albums' },
+    { link: 'settings', title: 'Settings' },
+  ];
 }

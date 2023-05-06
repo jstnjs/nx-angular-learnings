@@ -27,6 +27,10 @@ export const demoAppShellRoutes: Route[] = [
         loadComponent: () => import('@jv/demo-app/features/article-show').then((c) => c.ArticleShowComponent),
         canActivate: [articleGuard],
       },
+      {
+        path: 'experiments',
+        loadComponent: () => import('@jv/demo-app/features/experiments').then((c) => c.ExperimentsComponent),
+      },
     ],
     providers: [
       provideState(authFeature),
