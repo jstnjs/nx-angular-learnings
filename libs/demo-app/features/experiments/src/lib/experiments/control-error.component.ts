@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
 
 @Component({
+  standalone: true,
+  selector: 'control-error',
   template: `<p class="help is-danger" [class.hide]="_hide">{{ _text }}</p>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

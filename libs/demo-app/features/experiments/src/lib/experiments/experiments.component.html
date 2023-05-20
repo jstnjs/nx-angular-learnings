@@ -23,7 +23,7 @@
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <form [formGroup]="testForm" (submit)="validateForm()" class="space-y-6">
+      <form [formGroup]="testForm" class="space-y-6">
         <div>
           <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
           <div class="mt-1">
@@ -46,6 +46,21 @@
               id="lastName"
               name="lastName"
               type="lastName"
+              required
+              class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+          <control-error></control-error>
+        </div>
+
+        <div>
+          <label for="initials" class="block text-sm font-medium text-gray-700">Initials</label>
+          <div class="mt-1">
+            <input
+              formControlName="initials"
+              id="initials"
+              name="initials"
+              type="initials"
               required
               class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />

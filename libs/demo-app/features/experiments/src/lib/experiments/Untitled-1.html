@@ -1,0 +1,18 @@
+<form [formGroup]="testForm">
+  <div>
+    <input formControlName="firstName" id="firstName" name="firstName" type="firstName" required />
+    <!-- <error-message></error-message> -->
+  </div>
+
+  <div>
+    <input formControlName="lastName" id="lastName" name="lastName" type="lastName" required />
+    <!-- <error-message></error-message> -->
+  </div>
+
+  <div>
+    <input formControlName="initials" id="initials" name="initials" type="initials" required />
+    <!-- <error-message></error-message> -->
+  </div>
+
+  <button type="submit">Sign in</button>
+</form>
