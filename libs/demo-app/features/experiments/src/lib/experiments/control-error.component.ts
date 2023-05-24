@@ -3,13 +3,15 @@ import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@a
 @Component({
   standalone: true,
   selector: 'control-error',
-  template: `<p class="help is-danger" [class.hide]="_hide">{{ _text }}</p>`,
+  template: `<p class="mt-2 text-sm text-red-600" [class.hide]="_hide" id="email-error">{{ _text }}</p>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ControlErrorComponent {
   // @ts-ignore
   _text: string;
   _hide = true;
+
+  @Input() message: any;
 
   @Input() set text(value: string) {
     if (value !== this._text) {
