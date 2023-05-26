@@ -41,7 +41,10 @@ export class ErrorComponent implements OnInit, OnDestroy {
           }
         });
       } else {
-        console.error(`Control "${this.controlName}" not found in the form group.`);
+        const message = this.controlName
+          ? `Control "${this.controlName}" not found in the form group.`
+          : `Input controlName is required`;
+        console.error(message);
       }
     } else {
       console.error(`ErrorComponent must be used within a FormGroupDirective.`);
