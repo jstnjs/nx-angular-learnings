@@ -1,14 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormErrorsDirective } from './form-error.directive';
-import { FormSubmitDirective } from './form-submit.directive';
-import { ControlErrorComponent } from './control-error.component';
+import { ErrorComponent } from './error.component';
 
 @Component({
   selector: 'jv-experiments',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormErrorsDirective, FormSubmitDirective, ControlErrorComponent],
+  imports: [CommonModule, ReactiveFormsModule, ErrorComponent],
   templateUrl: 'experiments.component.html',
   styles: [],
 })
