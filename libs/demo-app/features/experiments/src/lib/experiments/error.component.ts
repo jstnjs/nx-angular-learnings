@@ -1,17 +1,8 @@
-import { AsyncPipe, JsonPipe } from '@angular/common';
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  ChangeDetectorRef,
-  OnInit,
-  Inject,
-  OnDestroy,
-  Optional,
-} from '@angular/core';
-import { FormControl, FormGroupDirective, NgControl, ValidationErrors } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
+import { Component, ChangeDetectionStrategy, Input, OnInit, Inject, OnDestroy, Optional } from '@angular/core';
+import { FormGroupDirective } from '@angular/forms';
 import { FORM_ERRORS } from './form.token';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription, merge } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -26,15 +17,9 @@ export class ErrorComponent implements OnInit, OnDestroy {
 
   @Input() controlName!: string;
 
-  constructor(
-    @Inject(FORM_ERRORS) private errors: any,
-    private cdr: ChangeDetectorRef,
-    @Optional() private formGroupDirective: FormGroupDirective,
-  ) {}
+  constructor(@Inject(FORM_ERRORS) private errors: any, @Optional() private formGroupDirective: FormGroupDirective) {}
 
   ngOnInit(): void {
-    console.log(this.formGroupDirective);
-    // Add error handling. Unknown keys?
     // Add accessibility
     // Add localization
 
@@ -42,11 +27,10 @@ export class ErrorComponent implements OnInit, OnDestroy {
       const control = this.formGroupDirective.control.get(this.controlName);
 
       if (control) {
-        this.subscription = control.valueChanges?.subscribe(() => {
+        this.subscription = merge(control.valueChanges, this.formGroupDirective.ngSubmit).subscribe(() => {
           const controlErrors = control.errors;
 
           if (controlErrors) {
-            console.log('controlErrors', controlErrors);
             const firstKey = Object.keys(controlErrors)[0];
             const getError = this.errors[firstKey];
             const text = getError(controlErrors[firstKey]);
