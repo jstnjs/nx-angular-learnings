@@ -24,7 +24,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   message$ = new BehaviorSubject<string>('');
 
-  @Input() control!: FormControl;
+  @Input() controlName!: string;
 
   constructor(
     @Inject(FORM_ERRORS) private errors: any,
@@ -38,20 +38,30 @@ export class ErrorComponent implements OnInit, OnDestroy {
     // Add accessibility
     // Add localization
 
-    this.subscription = this.control.valueChanges?.subscribe(() => {
-      const controlErrors = this.control.errors;
+    if (this.formGroupDirective) {
+      const control = this.formGroupDirective.control.get(this.controlName);
 
-      if (controlErrors) {
-        console.log('controlErrors', controlErrors);
-        const firstKey = Object.keys(controlErrors)[0];
-        const getError = this.errors[firstKey];
-        const text = getError(controlErrors[firstKey]);
+      if (control) {
+        this.subscription = control.valueChanges?.subscribe(() => {
+          const controlErrors = control.errors;
 
-        this.setError(text);
+          if (controlErrors) {
+            console.log('controlErrors', controlErrors);
+            const firstKey = Object.keys(controlErrors)[0];
+            const getError = this.errors[firstKey];
+            const text = getError(controlErrors[firstKey]);
+
+            this.setError(text);
+          } else {
+            this.setError('');
+          }
+        });
       } else {
-        this.setError('');
+        console.error(`Control "${this.controlName}" not found in the form group.`);
       }
-    });
+    } else {
+      console.error(`ErrorComponent must be used within a FormGroupDirective.`);
+    }
   }
 
   setError(text: string) {
