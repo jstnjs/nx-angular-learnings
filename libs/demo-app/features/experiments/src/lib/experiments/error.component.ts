@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input, OnInit, Inject, OnDestroy, Optional } from '@angular/core';
-import { FormGroupDirective } from '@angular/forms';
+import { FormGroupDirective, ValidationErrors } from '@angular/forms';
 import { FORM_ERRORS } from './form.token';
 import { BehaviorSubject, Subscription, merge } from 'rxjs';
 
@@ -16,6 +16,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
   message$ = new BehaviorSubject<string>('');
 
   @Input() controlName!: string;
+  @Input() customErrors?: ValidationErrors;
 
   constructor(@Inject(FORM_ERRORS) private errors: any, @Optional() private formGroupDirective: FormGroupDirective) {}
 
@@ -33,7 +34,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
           if (controlErrors) {
             const firstKey = Object.keys(controlErrors)[0];
             const getError = this.errors[firstKey];
-            const text = getError(controlErrors[firstKey]);
+            const text = this.customErrors?.[firstKey] || getError(controlErrors[firstKey]);
 
             this.setError(text);
           } else {

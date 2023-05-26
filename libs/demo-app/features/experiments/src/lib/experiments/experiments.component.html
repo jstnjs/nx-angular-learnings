@@ -34,7 +34,6 @@
               type="firstName"
               required
               class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              customError="{ required: 'This could be a custom required error'}"
             />
             <jv-error controlName="firstName"/>
           </div>
@@ -66,7 +65,7 @@
               required
               class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
-            <jv-error controlName="initials" customError="{ required: 'This could be a custom required error'}" />
+            <jv-error controlName="initials" [customErrors]="{ required: 'This could be a custom required error'}" />
           </div>
         </div>
 
