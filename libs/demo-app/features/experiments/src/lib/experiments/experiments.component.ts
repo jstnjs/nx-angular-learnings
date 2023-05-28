@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ErrorComponent } from './error.component';
+import { ControlErrorComponent } from './control-error.component';
 
 @Component({
   selector: 'jv-experiments',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ErrorComponent],
+  imports: [CommonModule, ReactiveFormsModule, ControlErrorComponent],
   templateUrl: 'experiments.component.html',
   styles: [],
 })
@@ -21,6 +21,5 @@ export class ExperimentsComponent {
 
   validateForm() {
     console.log(this.testForm.value);
-    // this.testForm.markAllAsTouched();
   }
 }
