@@ -28,7 +28,7 @@
           <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
           <div class="mt-1">
             <app-custom-input formControlName="firstName" (valueChanged)="checkInput($event)"></app-custom-input>
-            
+            <control-error controlName="firstName" />
           </div>
         </div>
 

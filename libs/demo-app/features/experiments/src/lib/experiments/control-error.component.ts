@@ -31,6 +31,8 @@ export class ControlErrorComponent implements OnInit, OnDestroy {
           .subscribe(() => {
             const controlErrors = control.errors;
 
+            console.log(controlErrors);
+
             if (controlErrors) {
               const firstKey = Object.keys(controlErrors)[0];
               const getError = this.errors[firstKey];

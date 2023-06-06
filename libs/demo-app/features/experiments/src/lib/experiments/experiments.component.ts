@@ -16,7 +16,7 @@ export class ExperimentsComponent {
   fb = inject(FormBuilder);
 
   testForm = this.fb.nonNullable.group({
-    firstName: ['', [Validators.required]],
+    firstName: [''],
     lastName: ['', Validators.minLength(4)],
     initials: ['', Validators.required],
   });

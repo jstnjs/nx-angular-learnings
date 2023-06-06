@@ -1,4 +1,4 @@
-import { Component, forwardRef, Host, Optional, Self, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, forwardRef, OnInit, Output, EventEmitter, Inject, inject } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -8,6 +8,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { TaskService } from './task.service';
 
 interface ApiResponse {
   code: string;
@@ -35,6 +36,7 @@ export class TaskComponent implements OnInit, ControlValueAccessor, Validator {
   @Output() valueChanged = new EventEmitter<ApiResponse>();
   apiResponse: ApiResponse[] = [];
   ngControl = Inject(NgControl);
+  taskService = inject(TaskService);
   onChange: any = () => {};
   onTouched: any = () => {};
   displayedValue = '';
@@ -46,25 +48,16 @@ export class TaskComponent implements OnInit, ControlValueAccessor, Validator {
   }
 
   ngOnInit(): void {
-    this.fetchData();
-  }
-
-  fetchData(): void {
-    this.http.get<ApiResponse[]>('/api/tasks').subscribe(
-      (response: ApiResponse[]) => {
-        this.apiResponse = response;
-      },
-      (error) => {
-        console.error('Error fetching data from API:', error);
-      },
-    );
+    this.taskService.tasks.subscribe((response: ApiResponse[]) => {
+      this.apiResponse = response;
+    });
   }
 
   validate(control: AbstractControl): { [key: string]: any } | null {
     const inputValue = control.value;
     const matchedRecord = this.apiResponse.find((record: ApiResponse) => record.data === inputValue);
 
-    if (matchedRecord) {
+    if (matchedRecord || inputValue === '') {
       this.valueChanged.emit(matchedRecord);
       return null; // Valid input
     } else {
