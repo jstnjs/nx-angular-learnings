@@ -28,6 +28,6 @@ export class TaskService {
   }
 
   private requestTasks() {
-    return this.http.get<any>('/api/articles');
+    return this.http.get<any>('/api/tasks');
   }
 }

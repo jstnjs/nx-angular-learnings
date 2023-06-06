@@ -23,20 +23,12 @@
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <form [formGroup]="testForm" class="space-y-6">
+      <form [formGroup]="testForm" class="space-y-6" (ngSubmit)="validateForm()">
         <div>
           <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
           <div class="mt-1">
-            <input
-              formControlName="firstName"
-              id="firstName"
-              name="firstName"
-              type="firstName"
-              aaTask
-              required
-              class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-            />
-            <control-error controlName="firstName"/>
+            <app-custom-input formControlName="firstName" (valueChanged)="checkInput($event)"></app-custom-input>
+            
           </div>
         </div>
 
