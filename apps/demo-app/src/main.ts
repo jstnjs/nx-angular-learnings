@@ -1,26 +1,8 @@
+import { appConfig } from './app/app.config';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
-import { demoAppShellRoutes } from '@jv/demo-app/features/shell';
-import { provideStore } from '@ngrx/store';
+
 import { AppComponent } from './app/app.component';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { isDevMode } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
-import { API_URL } from '@jv/shared/core/http-client';
+
 import './environments/environment';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(demoAppShellRoutes, withEnabledBlockingInitialNavigation()),
-    provideStore(),
-    provideStoreDevtools({
-      maxAge: 25, // Retains last 25 states
-      logOnly: !isDevMode(), // Restrict extension to log-only mode
-      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-      trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
-      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
-    }),
-    { provide: API_URL, useValue: '/api' },
-    provideHttpClient(),
-  ],
-}).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
