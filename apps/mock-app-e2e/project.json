@@ -4,19 +4,27 @@
   "sourceRoot": "apps/mock-app-e2e/src",
   "projectType": "application",
   "targets": {
-    "e2e": {
+    "asdfasd": {
       "executor": "nx:run-commands",
       "options": {
         "command": "start-server-and-test 'npm run mock:server' http://localhost:3000 'nx run mock-app-e2e:testing --verbose'"
       }
     },
-    "testing": {
+    "start-mock": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run mock:server",
+        "readyWhen": "JSON server listening on port 3000"
+      }
+    },
+    "e2e": {
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/mock-app-e2e/cypress.config.ts",
         "devServerTarget": "mock-app:serve",
         "testingType": "e2e"
       },
+      "dependsOn": ["start-mock"],
       "configurations": {
         "production": {
           "devServerTarget": "mock-app:serve:production"
@@ -25,6 +33,13 @@
           "devServerTarget": "mock-app:serve-static"
         }
       }
+    },
+    "cleanup": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx kill-port 3000"
+      },
+      "dependsOn": ["e2e"]
     },
     "lint": {
       "executor": "@nx/linter:eslint",
