@@ -1,0 +1,6 @@
+<h1>Welcome mock-app</h1>
+
+<ng-container *ngIf="users$ | async as users">
+  <div class="js-test" *ngFor="let user of users.data.users">{{ user.name }}</div>
+</ng-container>
+<router-outlet></router-outlet>

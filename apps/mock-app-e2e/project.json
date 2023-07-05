@@ -1,0 +1,39 @@
+{
+  "name": "mock-app-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mock-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "start-server-and-test 'npm run mock:server' http://localhost:3000 'nx run mock-app-e2e:testing --verbose'"
+      }
+    },
+    "testing": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/mock-app-e2e/cypress.config.ts",
+        "devServerTarget": "mock-app:serve",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "mock-app:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "mock-app:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mock-app-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["mock-app"]
+}
