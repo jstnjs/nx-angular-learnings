@@ -16,7 +16,7 @@ export class LayoutComponent {
     { link: 'all-files', title: 'All files' },
     { link: 'photos', title: 'Photos' },
     { link: 'experiments', title: 'Experiments' },
-    { link: 'albums', title: 'Albums' },
+    { link: 'wizard', title: 'wizard' },
     { link: 'settings', title: 'Settings' },
   ];
 }

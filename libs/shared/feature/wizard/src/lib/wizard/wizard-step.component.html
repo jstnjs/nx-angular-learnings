@@ -1,0 +1,6 @@
+CurrentData: {{ currentStep$ | async | json }}
+
+<form [formGroup]="form">
+  <input type="text" formControlName="firstName" />
+  <input type="text" formControlName="lastName" />
+</form>

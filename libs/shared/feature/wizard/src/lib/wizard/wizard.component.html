@@ -1,1 +1,9 @@
 <p>wizard works!</p>
+
+<ng-container *ngFor="let code of codes$ | async"> // </ng-container>
+
+{{ currentStep$ | async }}
+
+<button (click)="next()">Next</button>
+<a class="bg-red-500 py-4 px-8 rounded" [routerLink]="['/wizard', 2]">Volgende item</a>
+<router-outlet></router-outlet>

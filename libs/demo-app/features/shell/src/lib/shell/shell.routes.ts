@@ -31,6 +31,16 @@ export const demoAppShellRoutes: Route[] = [
         path: 'experiments',
         loadComponent: () => import('@jv/demo-app/features/experiments').then((c) => c.ExperimentsComponent),
       },
+      {
+        path: 'wizard',
+        loadComponent: () => import('@jv/shared/feature/wizard').then((c) => c.WizardComponent),
+        children: [
+          {
+            path: ':itemId',
+            loadComponent: () => import('@jv/shared/feature/wizard').then((c) => c.WizardStepComponent),
+          },
+        ],
+      },
     ],
     providers: [
       provideState(authFeature),
