@@ -11,10 +11,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v3
-      - run: npm install nx@16.3.2 --no-save
-
       # - run: npx nx format:check
-      - run: npx nx affected -t lint --parallel=3
+      - run: npm install nx@16.3.2 --no-save
+      - run: nx print-affected --base=origin/main --head=origin/add-ci
+      # - run: npx nx affected --base=origin/main --head=origin/add-ci -t lint --parallel=3
       # - run: npx nx affected -t test --parallel=3 --configuration=ci
       # - run: npx nx affected -t build --parallel=3
