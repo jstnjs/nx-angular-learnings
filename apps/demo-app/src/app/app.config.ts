@@ -1,11 +1,13 @@
-import { ApplicationConfig } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig } from '@angular/core';
 import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
 import { demoAppShellRoutes } from '@jv/demo-app/features/shell';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { API_URL } from '@jv/shared/core/http-client';
+import { Observable, delay, tap } from 'rxjs';
+import { provideFeatureFlag } from '@jv/demo-app/features/experiments';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +22,6 @@ export const appConfig: ApplicationConfig = {
     }),
     { provide: API_URL, useValue: '/api' },
     provideHttpClient(),
+    provideFeatureFlag(),
   ],
 };

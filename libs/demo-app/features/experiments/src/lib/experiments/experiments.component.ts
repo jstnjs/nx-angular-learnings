@@ -4,11 +4,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ControlErrorComponent } from './control-error.component';
 import { TaskDirective } from './task.directive';
 import { TaskComponent } from './task.component';
+import { FlagDirective } from './flag.directive';
 
 @Component({
   selector: 'jv-experiments',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ControlErrorComponent, TaskDirective, TaskComponent],
+  imports: [CommonModule, ReactiveFormsModule, ControlErrorComponent, TaskDirective, TaskComponent, FlagDirective],
   templateUrl: 'experiments.component.html',
   styles: [],
 })
