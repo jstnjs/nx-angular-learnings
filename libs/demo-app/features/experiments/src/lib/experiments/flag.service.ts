@@ -8,7 +8,10 @@ type FlagResponse = {
   fastSettings: boolean;
 };
 
-export type FlagOptions = keyof FlagResponse;
+export type FlagKeys = keyof FlagResponse;
+export type FlagOptions = {
+  [K in FlagKeys]: K;
+}[FlagKeys];
 
 @Injectable({ providedIn: 'root' })
 export class FlagService {
