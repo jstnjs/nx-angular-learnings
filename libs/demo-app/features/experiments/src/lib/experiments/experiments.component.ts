@@ -5,11 +5,20 @@ import { ControlErrorComponent } from './control-error.component';
 import { TaskDirective } from './task.directive';
 import { TaskComponent } from './task.component';
 import { FlagDirective } from './flag.directive';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'jv-experiments',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ControlErrorComponent, TaskDirective, TaskComponent, FlagDirective],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ControlErrorComponent,
+    TaskDirective,
+    TaskComponent,
+    FlagDirective,
+    RouterLink,
+  ],
   templateUrl: 'experiments.component.html',
   styles: [],
 })

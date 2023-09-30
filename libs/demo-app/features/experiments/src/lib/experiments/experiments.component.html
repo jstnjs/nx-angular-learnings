@@ -67,6 +67,8 @@
         <div *featureFlag="'fastRegister'; else notEnabled">test...</div>
         <ng-template #notEnabled> not enabled</ng-template>
 
+        Can access?
+        <a [routerLink]="['/test']">Can match?? feature?</a>
 
         <div>
           <button

@@ -4,6 +4,7 @@ import { provideState } from '@ngrx/store';
 import { AuthEffects, authFeature } from '@jv/shared/data-access/auth';
 import { provideEffects } from '@ngrx/effects';
 import { articleGuard, ArticlesEffects, articlesFeature } from '@jv/demo-app/data-access/articles';
+import { featureFlagGuard } from '@jv/demo-app/features/experiments';
 
 export const demoAppShellRoutes: Route[] = [
   {
@@ -30,6 +31,11 @@ export const demoAppShellRoutes: Route[] = [
       {
         path: 'experiments',
         loadComponent: () => import('@jv/demo-app/features/experiments').then((c) => c.ExperimentsComponent),
+      },
+      {
+        path: 'test',
+        canMatch: [featureFlagGuard('fastRegister')],
+        loadComponent: () => import('@jv/demo-app/features/login').then((c) => c.LoginComponent),
       },
     ],
     providers: [
