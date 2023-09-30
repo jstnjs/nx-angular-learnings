@@ -1,5 +1,5 @@
 import { Directive, Input, TemplateRef, ViewContainerRef, inject, signal } from '@angular/core';
-import { FlagService } from './flag.service';
+import { FlagOptions, FlagService } from './flag.service';
 
 @Directive({ selector: '[featureFlag]', standalone: true })
 export class FlagDirective {
@@ -9,16 +9,13 @@ export class FlagDirective {
   hasView = signal(false);
   elseTemplateRef: TemplateRef<any> | null = null;
 
-  @Input() set featureFlag(feature: string) {
+  @Input() set featureFlag(feature: FlagOptions) {
     if (this.flagService.getFeature(feature) && !this.hasView()) {
       this.viewContainer.createEmbeddedView(this.templateRef);
       this.hasView.set(true);
     } else {
       this.viewContainer.clear();
       this.hasView.set(false);
-      console.log('who is first?');
-
-      console.log(this.elseTemplateRef);
 
       if (this.elseTemplateRef) {
         this.viewContainer.createEmbeddedView(this.elseTemplateRef);

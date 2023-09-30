@@ -4,7 +4,11 @@ import { Observable, tap } from 'rxjs';
 
 type FlagResponse = {
   fastLogin: boolean;
+  fastRegister: boolean;
+  fastSettings: boolean;
 };
+
+export type FlagOptions = keyof FlagResponse;
 
 @Injectable({ providedIn: 'root' })
 export class FlagService {
@@ -15,7 +19,7 @@ export class FlagService {
     return this.http.get<FlagResponse>('/api/flags').pipe(tap((features) => this.features.set(features)));
   }
 
-  getFeature(feature: string): boolean {
+  getFeature(feature: FlagOptions): boolean {
     return this.features()[feature] ?? false;
   }
 }

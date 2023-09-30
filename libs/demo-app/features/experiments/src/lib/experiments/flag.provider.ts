@@ -1,15 +1,15 @@
-import { HttpClient } from '@angular/common/http';
-import { APP_INITIALIZER } from '@angular/core';
-import { Observable, delay, tap } from 'rxjs';
+import { APP_INITIALIZER, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FlagService } from './flag.service';
 
-function initializeAppFactory(flagService: FlagService): () => Observable<any> {
+function initializeFeatureFlag(): () => Observable<any> {
+  const flagService = inject(FlagService);
   return () => flagService.getFeatures();
 }
 
 export const provideFeatureFlag = () => ({
   provide: APP_INITIALIZER,
-  useFactory: initializeAppFactory,
-  deps: [FlagService],
+  useFactory: initializeFeatureFlag,
+  deps: [],
   multi: true,
 });
