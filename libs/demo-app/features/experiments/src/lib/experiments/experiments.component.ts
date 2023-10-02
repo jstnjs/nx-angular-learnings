@@ -4,7 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ControlErrorComponent } from './control-error.component';
 import { TaskDirective } from './task.directive';
 import { TaskComponent } from './task.component';
-import { FlagDirective } from './flag.directive';
+import { FeatureFlagDirective } from './feature-flag.directive';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
     ControlErrorComponent,
     TaskDirective,
     TaskComponent,
-    FlagDirective,
+    FeatureFlagDirective,
     RouterLink,
   ],
   templateUrl: 'experiments.component.html',

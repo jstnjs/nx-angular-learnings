@@ -1,10 +1,10 @@
 import { APP_INITIALIZER, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FlagService } from './flag.service';
+import { FeatureFlagService } from './feature-flag.service';
 
 function initializeFeatureFlag(): () => Observable<any> {
-  const flagService = inject(FlagService);
-  return () => flagService.getFeatures();
+  const featureFlagService = inject(FeatureFlagService);
+  return () => featureFlagService.getFeatureFlags();
 }
 
 export const provideFeatureFlag = () => ({

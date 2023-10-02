@@ -1,25 +1,20 @@
 import { Directive, Input, TemplateRef, ViewContainerRef, inject, signal } from '@angular/core';
-import { FlagOptions, FlagService } from './flag.service';
+import { FeatureFlagKeys, FeatureFlagService } from './feature-flag.service';
 
 @Directive({ selector: '[featureFlag]', standalone: true })
-export class FlagDirective {
+export class FeatureFlagDirective {
   templateRef = inject(TemplateRef);
   viewContainer = inject(ViewContainerRef);
-  flagService = inject(FlagService);
+  featureFlagService = inject(FeatureFlagService);
   hasView = signal(false);
-  elseTemplateRef: TemplateRef<any> | null = null;
 
-  @Input() set featureFlag(feature: FlagOptions) {
-    if (this.flagService.getFeature(feature) && !this.hasView()) {
+  @Input() set featureFlag(feature: FeatureFlagKeys) {
+    if (this.featureFlagService.getFeature(feature) && !this.hasView()) {
       this.viewContainer.createEmbeddedView(this.templateRef);
       this.hasView.set(true);
     } else {
       this.viewContainer.clear();
       this.hasView.set(false);
-
-      if (this.elseTemplateRef) {
-        this.viewContainer.createEmbeddedView(this.elseTemplateRef);
-      }
     }
   }
 

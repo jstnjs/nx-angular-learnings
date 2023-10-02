@@ -63,9 +63,13 @@
           </div>
         </div>
 
-        Show if there is a login feature:
-        <div *featureFlag="'fastRegister'; else notEnabled">test...</div>
-        <ng-template #notEnabled> not enabled</ng-template>
+        
+        <div *featureFlag="'fastRegister'; else notEnabled">
+          <button>Login with one click</button>
+        </div>
+        <ng-template #notEnabled>
+          <div>Mail us one support@example.com for your login.</div>
+        </ng-template>
 
         Can access?
         <a [routerLink]="['/test']">Can match?? feature?</a>
